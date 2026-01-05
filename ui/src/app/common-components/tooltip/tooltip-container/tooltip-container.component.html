@@ -1,0 +1,11 @@
+@if (asString) {
+  <ng-container>
+    {{ asString }}
+  </ng-container>
+}
+
+@if (asTemplate) {
+  <ng-container>
+    <ng-template [ngTemplateOutlet]="asTemplate"></ng-template>
+  </ng-container>
+}

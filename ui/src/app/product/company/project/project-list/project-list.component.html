@@ -1,0 +1,14 @@
+
+@for (project of projectList(); track project.projectId) {
+  <app-block-link
+  [iconName]="(project.isPublic) ? 'shared' : ''"
+  [link]="['project', project.projectId]"
+  [cursorPointer]="true"
+  >
+  {{project.projectName}}
+  </app-block-link>
+}
+@if (projectList().length === 0) {
+  <app-expandable-header><app-plug>No projects here</app-plug></app-expandable-header>
+  
+}

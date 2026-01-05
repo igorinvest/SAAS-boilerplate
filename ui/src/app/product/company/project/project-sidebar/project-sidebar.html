@@ -1,0 +1,8 @@
+<div class="flex items-center group font-semibold pr-1">
+    <app-expandable-header class="grow">
+        {{company()?.companyName}} Projects
+    </app-expandable-header>
+    <app-icon-button [routerLink]="['new-project']" iconName="add"></app-icon-button>
+</div>
+
+<app-project-list></app-project-list>

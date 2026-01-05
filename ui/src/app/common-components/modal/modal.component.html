@@ -1,0 +1,15 @@
+<ng-template #modal id="modal">
+    <div class="flex flex-col dark:text-zinc-200 bg-zinc-100 shadow-xl w-full">
+        <div class="flex items-center h-12 p-6 bg-zinc-300 dark:bg-zinc-900">
+            <span class="font-medium">{{title}}</span>
+            <button (click)="close()" class="ml-auto h-6 w-6 flex items-center justify-center hover:bg-mention-badge">
+                <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="flex flex-col p-6 dark:bg-zinc-800">
+            <ng-content select="[main]" />
+        </div>
+    </div>
+</ng-template>

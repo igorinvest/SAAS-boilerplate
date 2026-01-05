@@ -1,0 +1,37 @@
+@defer () {
+    <div class="w-full">
+        <div class="flex text-center px-6 py-4">
+            <span>Please note, Docion doesn't send invitation emails. User will be added to your organisation only
+            when he/she accepets your invitation manually.</span>
+        </div>
+        <table class="table-auto">
+            <thead>
+            @for (header of displayedColumns; track $index) {
+                <th class="px-4 py-2">
+                {{header}}
+                </th>
+            }
+            </thead>
+            <tbody>
+                @for (user of companyUsers(); track $index) {
+                <tr>
+                    <td class="px-4 py-2">{{user.userName}}</td>
+                    <td class="px-4 py-2">{{user.email}}</td>
+                    <td class="px-4 py-2">
+                        <ui-checkbox name="isAdmin" ngDefaultControl [attr.debounceTime]="1000" [ngModel]="user.isAdmin" (ngModelChange)="updateIsAdmin(user, $event)"></ui-checkbox>
+                    </td>
+                    <td class="px-4 py-2">
+                        <ui-checkbox name="isBlocked" ngDefaultControl [attr.debounceTime]="1000" [ngModel]="user.isBlocked" (ngModelChange)="updateIsBlocked(user, $event)"></ui-checkbox>
+                    </td>
+                    <td class="px-4 py-2">{{user.createdAt | date}}</td>
+                    <td class="px-4 py-2">{{user.updatedAt | date}}</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+} @loading {
+  <app-center-loader></app-center-loader>
+} @placeholder {
+  <app-center-loader></app-center-loader>
+}

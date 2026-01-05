@@ -1,0 +1,15 @@
+<app-modal #modal id="modal" title="Invite user to the company">
+  <form main [formGroup]="invitationForm" class="flex flex-col gap-4 text-sm">
+    <ui-input
+    label="Invitation email"
+    type="email"
+    inputId="email"
+    ngDefaultControl
+    formControlName="email"
+    placeholder="name@domain.com"
+    ></ui-input>
+    <app-action-button class="" [disabled]="isSubmitted()" [loading]="isSubmitted()" (click)="invite()">Create invitation</app-action-button>
+  </form>
+</app-modal>
+
+<app-action-button (click)="this.modal.openDialog()">Invite user</app-action-button>

@@ -1,0 +1,59 @@
+<div class="fixed flex w-full h-1 z-100 overflow-hidden" role="progressbar" aria-valuenow="50" aria-valuemin="0"
+    aria-valuemax="100">
+    <div class="flex flex-col justify-center overflow-hidden bg-mention-badge text-xs text-center whitespace-nowrap"
+        [class.animate-progress-bar]="isNavigating()"></div>
+</div>
+
+<div class="flex h-full overflow-auto bg-m-grey dark:text-zinc-200 dark:bg-darkest text-sm">
+    <div
+    [class.w-0]="!showSidebar"
+    class="sm:w-80 transition-width duration-500 ease-in-out flex-none flex-col h-full bg-l-grey dark:bg-zinc-800">
+        @defer () {
+            @if (userLoaded() && !user()) {
+                <div class="flex justify-center items-center min-h-8 m-4 gap-2">
+                    <app-google></app-google>
+                    <app-email-auth></app-email-auth>
+                </div>
+            }
+            @if (user()) {
+                <div class="flex h-8 items-center group pr-1">
+                    <app-expandable-header 
+                    class="font-semibold cursor-pointer grow"
+                    [cdkMenuTriggerFor]="usermenu"
+                    iconName="dropdown">{{user()?.userName}}</app-expandable-header>
+                    <app-icon-button 
+                    routerLink="user"
+                    routerLinkActive="routerLinkActive"
+                    #rlaUser="routerLinkActive"
+                    [activated]="rlaUser.isActive"
+                    iconName="settings"/>
+                </div>
+            }
+
+            @if (user()) {
+                <app-block-link
+                [link]="['organisations']"
+                >Organisations</app-block-link>
+            }
+            <app-project-sidebar></app-project-sidebar>
+        }
+    </div><!-- ($event.dataTransfer) ? $event.dataTransfer.dropEffect = 'none' : null" -->
+    <div class="flex flex-col grow w-full h-full overflow-auto bg-zinc-100 dark:bg-darker"
+    (dragover)="$event.preventDefault();"
+    (drop)="$event.preventDefault();"
+    >
+        <div class="flex px-6 h-8 sm:h-0 sm:invisible text-center items-center gap-2">
+            <app-icon-button name="Menu toggle" iconName="menu" class="m-1" (click)="showSidebar = !showSidebar"></app-icon-button>
+            <img src="/logo1.svg" class="h-5">
+        </div>
+        <router-outlet/>
+    </div>
+</div>
+
+<ng-template #usermenu>
+    <app-dropdown-menu cdkMenu>
+        <app-expandable-item [cursorPointer]="true" cdkMenuItem (click)="logout()">
+            Log out
+        </app-expandable-item>
+    </app-dropdown-menu>
+</ng-template>

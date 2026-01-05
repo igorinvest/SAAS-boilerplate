@@ -1,0 +1,36 @@
+@defer () {
+  <div class="flex flex-col py-4 px-6 gap-2 w-fit">
+    <form class="flex flex-col w-fit gap-2" [formGroup]="editProjectForm" (ngSubmit)="onSubmit()">
+      <ui-input
+      formControlName="projectName"
+      label="Project name"
+      placeholder="My project name"
+      type="text"
+      />
+      <ui-checkbox 
+      label="Make project content publicly available"
+      formControlName="isPublic"
+      ></ui-checkbox>
+      <app-action-button type="submit">Save changes</app-action-button>
+    </form>
+    <app-action-button [loading]="saving()" (click)="confirmModal.openDialog()">Delete project</app-action-button>
+  </div>
+} @loading {
+    <app-center-loader/>
+} @placeholder {
+    <app-center-loader/>
+}
+
+@defer (when project()) {
+  <app-modal #confirm title="Confirm deleting the project">
+    <div main class="flex flex-col gap-4 max-w-md">
+      <div>
+        Are you sure you want to delete the project? It will only work if content has been deleted too.
+      </div>
+      <div class="flex justify-between w-full">
+        <app-action-button (click)="confirmModal.close()">Cancel</app-action-button>
+        <app-action-button (click)="deleteProject(); confirmModal.close()">Confirm</app-action-button>
+      </div>
+    </div>
+  </app-modal>
+}

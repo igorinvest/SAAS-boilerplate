@@ -1,0 +1,18 @@
+<app-expandable-header class="font-semibold">Organisation settings</app-expandable-header>
+<div class="px-6 py-4 gap-4 w-fit">
+    <form (submit)="updateName()" [formGroup]="companyForm" class="flex flex-col gap-2">
+        <ui-input
+        label="Organisation name"
+        type="text"
+        formControlName="companyName"
+        placeholder="My company"
+        ></ui-input>
+        <div>
+            <app-action-button type="submit">Save</app-action-button>
+        </div>
+    </form>
+</div>
+<app-company-users></app-company-users>
+<div class="px-6 py-4">
+    <app-company-users-invite></app-company-users-invite>
+</div>

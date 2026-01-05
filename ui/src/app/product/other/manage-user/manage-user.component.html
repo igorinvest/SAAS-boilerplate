@@ -1,0 +1,7 @@
+<div class="px-6 py-4">
+    <form (submit)="updateName()" [formGroup]="userForm" class="flex flex-col gap-4">
+        <ui-input label="User name" type="text" formControlName="userName" placeholder="Olivia"></ui-input>
+        <app-action-button type="submit">Save</app-action-button>
+    </form>
+</div>
+

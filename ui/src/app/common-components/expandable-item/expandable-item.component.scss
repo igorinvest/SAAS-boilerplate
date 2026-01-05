@@ -1,0 +1,6 @@
+.selected {
+    background-color: rgb(170, 167, 255);
+    @media (prefers-color-scheme: dark) {
+        background-color: var(--zinc-700);
+    }
+}

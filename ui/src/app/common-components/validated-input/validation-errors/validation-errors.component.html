@@ -1,0 +1,7 @@
+<ul class="dvs-validation-errors">
+  @for (error of errors | keyvalue; track error) {
+    <li>
+      {{ errorMessages[error.key] }}
+    </li>
+  }
+</ul>

@@ -1,0 +1,47 @@
+<app-expandable-header class="font-semibold">Your organisations</app-expandable-header>
+<div class="flex flex-col w-fit px-6">
+    <table class="">
+        @for (userCompany of userCompanies(); track $index) {
+            <tr class="h-8">
+                <td class="px-2">
+                    {{userCompany.companyName}}
+                </td>
+                <td class="px-2">
+                    @if (userCompany.isAccepted && !userCompany.isDefault) {
+                        <app-text-link (click)="activateCompany(userCompany)">Activate organisation (and make default)</app-text-link>
+                        <!-- <app-action-button (click)="activateCompany(userCompany)">Activate space (and make default)</app-action-button> -->
+                    } @else if(userCompany.isAccepted && userCompany.isDefault) {
+                        <app-badge>Active</app-badge>
+                    } @else {}
+                </td>
+
+                @if (!userCompany.isAccepted) {
+                    <td class="px-2">
+                        <app-text-link (click)="acceptInvitation(userCompany)">Accept invitation</app-text-link>
+                    </td>
+                }
+
+                @if (userCompany.isAdmin && userCompany.companyId === userService.user()?.companyId) {
+                    <td class="px-2">
+                        <app-text-link [routerLink]="['edit', userCompany.userCompanyId]">Edit</app-text-link>
+                    </td>
+                }
+            </tr>
+        }
+            <tr class="flex h-8 justify-center">
+                <app-action-button (click)="newcompany.openDialog()">Create new organisation</app-action-button>
+            </tr>
+    </table>
+</div>
+
+
+<app-modal #newcompany title="Create new organisation">
+    <form main [formGroup]="newCompanyForm" (ngSubmit)="createCompany()" class="flex flex-col gap-4 max-w-md text-sm">
+        <ui-input formControlName="name" label="Organisation name" type="text" placeholder="My teams's organisation"></ui-input>
+        <div>{{newCompanyForm.errors}}</div>
+        <div class="flex justify-between w-full">
+            <app-action-button (click)="newcompany.close()">Cancel</app-action-button>
+            <app-action-button type="submit">Confirm</app-action-button>
+        </div>
+    </form>
+</app-modal>

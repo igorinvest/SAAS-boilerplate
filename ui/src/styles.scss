@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+@use "tailwindcss";
+//source is needed to whitelist calculated styles
+@source inline('w-{7,8}');
+@source inline('h-{7,8}');
+@source inline('rotate-{0,90,180,270,360}');
+@source inline('cursor-{not-allowed,pointer}');
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+html {
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+@theme static {
+    --color-lightest: #FFF9F1;
+    //--color-dark: ;
+    --color-darker: #383F45;
+    --color-darkest: var(--color-zinc-900);
+    --color-l-grey: #E9E9E9;
+    --color-m-grey: #CCCCCC;
+    --color-d-grey: #999999;
+    --color-active-item: #DC5960;
+    //--color-active-item-text: ;
+    --color-hover-item: #DC5960;
+    //--color-hover-item-text: ;
+
+    --color-column-bg: #CCCCCC; //darker grey
+    --color-menu-bg-hover: #F8F8FA; //very light grey
+    --color-active-item: #2D9EE0; //blue
+    --color-active-item-text: #FFFFFF;
+    --color-hover-item: #FFFFFF;
+    --color-text-color: #383F45; //darker grey
+    --color-active-presence: #60D156; //green accent
+    --color-mention-badge: #DC5960; //nice red
+}

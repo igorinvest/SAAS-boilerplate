@@ -1,0 +1,23 @@
+<div class="flex gap-2">
+    <app-expandable-header [isLink]="true" routerLink="./" class="font-semibold">{{project()?.projectName}} project</app-expandable-header>
+    <app-icon-button iconName="add" 
+    [routerLink]="['content', 'new']"
+    routerLinkActive="routerLinkActive"
+    #rla1="routerLinkActive"
+    [activated]="rla1.isActive"
+    ></app-icon-button>
+    <!-- <app-icon-button iconName="switch" [cdkMenuTriggerFor]="diagramslist"></app-icon-button> -->
+    <app-icon-button iconName="settings"
+    [routerLink]="['edit']"
+    routerLinkActive="routerLinkActive"
+    #rla2="routerLinkActive"
+    [activated]="rla2.isActive"
+    ></app-icon-button>
+    <app-icon-button 
+    iconName="merge" 
+    [routerLink]="['storage']"
+    routerLinkActive="routerLinkActive"
+    #rla3="routerLinkActive"
+    [activated]="rla3.isActive"
+    ></app-icon-button>
+</div>

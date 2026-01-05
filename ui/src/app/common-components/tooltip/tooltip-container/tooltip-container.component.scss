@@ -1,0 +1,21 @@
+:host {
+  display: block;
+  max-width: 12rem;
+  padding: 0.7rem;
+  font-size: 0.85rem;
+  color: #fff;
+  background: #000;
+  //border-radius: 0.5rem;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+:host-context(.top) {
+  margin-bottom: 0.5rem;
+  pointer-events: none;
+}
+
+:host-context(.bottom) {
+  margin-top: 0.5rem;
+  pointer-events: none;
+}

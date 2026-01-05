@@ -1,0 +1,27 @@
+<app-action-button (click)="this.modal.openDialog()">Login with Email</app-action-button>
+
+<app-modal #modal id="modal" title="Login/Register with Email">
+    <div main class="flex justify-center items-center flex-col">
+        @if (!token()) {
+            <form [formGroup]="loginForm" class="flex flex-col gap-4 text-sm">
+                <span>Enter your email to receive verification link</span>
+                <ui-input label="Email" type="email" inputId="email" ngDefaultControl formControlName="email"
+                    placeholder="name@domain.com"></ui-input>
+                <app-action-button class="" [disabled]="isSubmitted()" [loading]="isSubmitted()" (click)="sendLoginLink()">Send
+                    verification email</app-action-button>
+            </form>
+        } @else {
+
+            <div class="flex flex-col justify-center items-center text-center">
+                @if (!isSuccessful()) {
+                    <p class="text-red-600 dark:text-red-400 text-sm">Verification failed. Please reload the page and try again.</p>
+                }
+                <lib-pin-box [length]="4" [groupLength]="2" [type]="'text'" [formControl]="invitationCodeCtrl" [errorsMessage]="errors"
+                    (valueChanged)="onValueChanged($event)">
+                </lib-pin-box>
+            </div>
+
+        }
+    </div>
+
+</app-modal>

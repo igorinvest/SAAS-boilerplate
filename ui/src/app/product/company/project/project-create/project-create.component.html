@@ -1,0 +1,14 @@
+<app-expandable-header class="font-semibold">Create new project</app-expandable-header>
+<div class="px-6 py-4 w-fit">
+    <form main-1 [formGroup]="createProjectForm" (ngSubmit)="onSubmit()" class="flex flex-col gap-2">
+        <ui-input
+            label="Project name"
+            type="text"
+            formControlName="projectName"
+            placeholder="Project name"
+        ></ui-input>
+        <div>
+            <app-action-button type="submit">Create project</app-action-button>
+        </div>
+    </form>
+</div>
