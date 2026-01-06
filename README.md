@@ -47,14 +47,15 @@ GOOGLE_CLIENT_ID=""#for google auth
 MODEL_SYNC="new"#'none', 'new', 'alter'
 USE_SSL="false"
 ```
-During first launch use MODEL_SYNC="new" so that system creates DB schema automatically  
-2. Go to ./server folder and run npm i
-3. Launch node index.js (on production you need to build ui first - server will only serve existing files by default)
-4. Go to ./ui and run npm i
-5. Run ng generate environments - this will create ui/src/environments/environment.ts file
-6. Add angular configs in environment files:
-apiUrl: 'http://localhost:5001/api',
-googleClientId: '' - for google auth support, same as GOOGLE_CLIENT_ID
-7. Start UI with ng serve or ng build (ng build is expected for production)
-Use docker if needed
-Project may contain unused files and commented code
+During first launch use MODEL_SYNC="new" so that system creates DB schema automatically
+
+2. Go to ./server folder and run npm i  
+3. Launch node index.js (on production you need to build ui first - server will only serve existing files by default)  
+4. Go to ./ui and run npm i  
+5. Run ng generate environments - this will create ui/src/environments/environment.ts file  
+6. Add angular configs in environment files:  
+apiUrl: 'http://localhost:5001/api',  
+googleClientId: '' - for google auth support, same as GOOGLE_CLIENT_ID  
+7. Start UI with ng serve or ng build (ng build is expected for production)  
+Use docker if needed  
+Project may contain unused files and commented code  
